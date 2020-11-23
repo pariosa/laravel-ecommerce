@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
         //$this->call(AdminTableSeeder::class);
         //$this->call(SectionsTableSeeder::class);
-        $this->call(CategoryTableSeeder::class);
+        //$this->call(CategoryTableSeeder::class);
     }
 }

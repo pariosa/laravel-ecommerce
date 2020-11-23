@@ -27,7 +27,7 @@
       <div class="container-fluid">
 
         <!-- FORM START -->
-        <form method="post" role="form" name="categoryForm" action="{{url('admin/add-edit-category')}}" id="CategoryForm" enctype="multipart/form=data">
+        <form method="post" role="form" name="categoryForm" action="{{url('admin/add-edit-category')}}" id="CategoryForm" enctype="multipart/form-data">
           @csrf
           <div class="card card-default">
             <div class="card-header">
@@ -36,12 +36,29 @@
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
               </div>
             </div>
+            @if(Session::has('success_message'))
+              <div class="alert alert-success alert-dismissable fade show" role="alert">
+                  {{Session::get('success_message')}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+            @endif
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            @endif
             <!-- /.card-header -->
             <div class="card-body">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="category_name">Category Name</label>
+                    <label for="name">Category Name</label>
                   <input type="text"  class="form-control" id="name" name="name" placeholder="Enter Category Name" />
                   </div>
 
